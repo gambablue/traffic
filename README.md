@@ -17,3 +17,5 @@ A system verilog-based FPGA project simulating a smart traffic light controller,
 5. [Architecture](#architecture)
 6. [Contributing](#contributing)
 7. [License](#license)
+
+#introduction This the basis for our Week 4 laboratory. Implement it yourself and see if works fine
