@@ -4,6 +4,11 @@ A system verilog-based FPGA project simulating a smart traffic light controller,
 - 🚥  traffic control logic.
 - 🟢 open to improvement finite state machines for efficient state transitions.
 - ⚡ Hardware-specific optimizations for BASYS3 FPGA.
+
+![GitHub repo size](https://img.shields.io/github/repo-size/username/repo)
+![GitHub last commit](https://img.shields.io/github/last-commit/username/repo)
+![GitHub stars](https://img.shields.io/github/stars/username/repo?style=social)
+
 - ## Table of Contents
 1. [Introduction](#introduction)
 2. [Getting Started](#getting-started)
