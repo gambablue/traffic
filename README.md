@@ -7,7 +7,7 @@ A system verilog-based FPGA project simulating a smart traffic light controller,
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/gambablue/traffic)
 ![GitHub last commit](https://img.shields.io/github/last-commit/repo-size/gambablue/traffic)
-![GitHub stars](https://img.shields.io/github/stars/gambablue/repo?style=social)
+![GitHub stars](https://img.shields.io/github/stars/gambablue/traffic/repo?style=social)
 
 - ## Table of Contents
 1. [Introduction](#introduction)
