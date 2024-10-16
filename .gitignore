@@ -1,0 +1,10 @@
+*.jou
+*.log
+*.str
+*.wdb
+*.xpr
+*.sdk
+*.runs
+*.cache
+*.hw
+*.sim
