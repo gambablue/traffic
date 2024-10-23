@@ -9,7 +9,7 @@
 // Project Name: 
 // Target Device: BASYS3
 // Tool Versions: 
-// Description: 
+// Description: Traffic light controller
 // 
 // Dependencies: 
 // 
@@ -20,17 +20,18 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 module Traffic (
-    input logic clk,
-    input logic rst,
-    input logic TAORB, // traffic on A = 1 or on B = 0
-    output logic [5:0] led // light bits
+    input logic clk,  // Clock signal
+    input logic rst,  // Reset signal
+    input logic TAORB, // Traffic on A (1) or on B (0)
+    output logic [5:0] led // Light bits
 );
 
+    // State encoding
     typedef enum logic [1:0] {
-        GREENRED = 2'b00,
-        YELLOWRED = 2'b01,
-        REDGREEN = 2'b10,
-        REDYELLOW = 2'b11
+        GREENRED = 2'b00,  // Green for A, Red for B
+        YELLOWRED = 2'b01, // Yellow for A, Red for B
+        REDGREEN = 2'b10,  // Red for A, Green for B
+        REDYELLOW = 2'b11  // Red for A, Yellow for B
     } state_t;
 
     // State variables
@@ -40,10 +41,10 @@ module Traffic (
     // Sequential logic for state transition
     always_ff @(posedge clk or posedge rst) begin
         if (rst) 
-            state_reg <= GREENRED;
+            state_reg <= GREENRED;  // Reset to initial state
         else begin
             state_reg <= state_next;
-            val <= ~val; // Flip 'val' every clock cycle
+            val <= ~val; // Flip 'val' every clock cycle (may not be used)
         end
     end
 
@@ -51,29 +52,38 @@ module Traffic (
     always_comb begin
         // Default assignments
         state_next = state_reg;
-        led = 6'b001100;  // Default state: red-yellow-green (A side) and red-yellow-green (B side)
+        led = 6'b001100;  // Default state: Green for A, Red for B
 
         case (state_reg)
-            GREENRED: 
+            GREENRED: begin
                 if (!TAORB) begin
                     state_next = YELLOWRED;
-                    led = 6'b010100; // Yellow for A, red for B
+                    led = 6'b010100; // Yellow for A, Red for B
                 end
+                else begin
+                    state_next = GREENRED;
+                    led = 6'b001100; // Green for A, Red for B (stay in GREENRED)
+                end
+            end
             YELLOWRED: begin
                 state_next = REDGREEN;
-                led = 6'b100001; // Red for A, green for B
+                led = 6'b100001; // Red for A, Green for B
             end
-            REDGREEN: 
+            REDGREEN: begin
                 if (TAORB) begin
                     state_next = REDYELLOW;
-                    led = 6'b100010; // Red for A, yellow for B
+                    led = 6'b100010; // Red for A, Yellow for B
                 end
+                else begin
+                    state_next = REDGREEN;
+                    led = 6'b100001; // Red for A, Green for B (stay in REDGREEN)
+                end
+            end
             REDYELLOW: begin
                 state_next = GREENRED;
-                led = 6'b001100; // Green for A, red for B
+                led = 6'b001100; // Green for A, Red for B
             end
-            default: state_next = GREENRED; // Default state to handle any unexpected behavior
+            default: state_next = GREENRED; // Default state in case of invalid behavior
         endcase
     end
-
 endmodule
