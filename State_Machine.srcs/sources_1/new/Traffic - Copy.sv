@@ -52,38 +52,38 @@ module Traffic (
     always_comb begin
         // Default assignments
         state_next = state_reg;
-        led = 6'b001100;  // Default state: Green for A, Red for B  RED / YELLOW / GREEN
- case (state_reg)
+        led = 6'b001100;  // Default state: Green for A, Red for B
+
+        case (state_reg)
             GREENRED: begin
-	led = 6'b001100; 
-	if (!TAORB) begin
-                 		state_next = YELLOWRED;
-               	end
-                	else begin
-                 		state_next = GREENRED;
-	end
+                if (!TAORB) begin
+                    state_next = YELLOWRED;
+                    led = 6'b010100; // Yellow for A, Red for B
+                end
+                else begin
+                    state_next = GREENRED;
+                    led = 6'b001100; // Green for A, Red for B (stay in GREENRED)
+                end
             end
             YELLOWRED: begin
-            	state_next = REDGREEN;
-            	led = 6'b010100; 
+                state_next = REDGREEN;
+                led = 6'b100001; // Red for A, Green for B
             end
- REDGREEN: begin
- 	led = 6'b100001; // Red for A, Green for B
-                	if (TAORB) begin
+            REDGREEN: begin
+                if (TAORB) begin
                     state_next = REDYELLOW;
-	end
-                	else begin
+                    led = 6'b100010; // Red for A, Yellow for B
+                end
+                else begin
                     state_next = REDGREEN;
-	end
+                    led = 6'b100001; // Red for A, Green for B (stay in REDGREEN)
+                end
             end
             REDYELLOW: begin
-            	state_next = GREENRED;
-            	led = 6'b100010; // Red for A, Yellow for B
+                state_next = GREENRED;
+                led = 6'b001100; // Green for A, Red for B
             end
-            default: state_next = GREENRED; 
-            // Default state to handle any unexpected behavior
+            default: state_next = GREENRED; // Default state in case of invalid behavior
         endcase
-
-
     end
 endmodule

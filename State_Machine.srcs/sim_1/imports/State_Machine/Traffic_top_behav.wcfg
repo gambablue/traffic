@@ -11,26 +11,22 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="1,305.134769482 ms"></ZoomStartTime>
-      <ZoomEndTime time="1,414.334769483 ms"></ZoomEndTime>
-      <Cursor1Time time="1,363.334769482 ms"></Cursor1Time>
+      <ZoomStartTime time="0.000000000 ms"></ZoomStartTime>
+      <ZoomEndTime time="176.386069654 ms"></ZoomEndTime>
+      <Cursor1Time time="0.001000000 ms"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="172"></NameColumnWidth>
-      <ValueColumnWidth column_width="86"></ValueColumnWidth>
+      <ValueColumnWidth column_width="82"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="7" />
+   <WVObjectSize size="5" />
    <wvobject fp_name="/Traffic_top/clk_100MHz" type="logic">
       <obj_property name="ElementShortName">clk_100MHz</obj_property>
       <obj_property name="ObjectShortName">clk_100MHz</obj_property>
    </wvobject>
-   <wvobject fp_name="/Traffic_top/TA" type="logic">
-      <obj_property name="ElementShortName">TA</obj_property>
-      <obj_property name="ObjectShortName">TA</obj_property>
-   </wvobject>
-   <wvobject fp_name="/Traffic_top/TB" type="logic">
-      <obj_property name="ElementShortName">TB</obj_property>
-      <obj_property name="ObjectShortName">TB</obj_property>
+   <wvobject fp_name="/Traffic_top/TAORB" type="logic">
+      <obj_property name="ElementShortName">TAORB</obj_property>
+      <obj_property name="ObjectShortName">TAORB</obj_property>
    </wvobject>
    <wvobject fp_name="/Traffic_top/reset" type="logic">
       <obj_property name="ElementShortName">reset</obj_property>
@@ -44,9 +40,5 @@
       <obj_property name="ElementShortName">led[5:0]</obj_property>
       <obj_property name="ObjectShortName">led[5:0]</obj_property>
       <obj_property name="isExpanded"></obj_property>
-   </wvobject>
-   <wvobject fp_name="/Traffic_top/r4/TIMER" type="logic">
-      <obj_property name="ElementShortName">TIMER</obj_property>
-      <obj_property name="ObjectShortName">TIMER</obj_property>
    </wvobject>
 </wave_config>
